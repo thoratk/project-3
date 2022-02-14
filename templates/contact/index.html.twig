@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    <h1>Contact us</h1>
+    <br>
+    {{ form_start(form) }}
+    {% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+    <br>
+    <div class="row-form" style="background-color: #313131">
+
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.fullName, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.subject, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <button type="submit" value="Send" class="btn contact">Send</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

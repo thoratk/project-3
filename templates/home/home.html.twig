@@ -1,0 +1,266 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}
+    <style xmlns="http://www.w3.org/1999/html">
+        .main{
+            width: 100%;
+        }
+        input[type=text] {
+            padding: 8px;
+            width: 500px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+        .topnav input[type=text], .topnav .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+        .topnav input[type=text] {
+            border: 1px solid #ccc;
+        }
+        .search-container button {
+
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+
+    .tag {
+        border-color: black;
+        border-radius: 5px;
+        border-style: solid;
+        margin-bottom: 30px;
+        margin-right: 105px;
+        box-shadow: 6px 6px 6px #808080;
+    }
+
+    @keyframes mymove1 {
+        from {left: 0px;}
+        to {left: 400px;}}
+    @keyframes mymove4 {
+        from {right: 0px;}
+        to {right: 400px;}}
+    @keyframes mymove3 {
+        from {left: 0px;}
+        to {left: 400px;}}
+    @keyframes mymove2 {
+        from {right: 0px;}
+        to {right: 400px;}}
+    @keyframes mymove {
+        from {left: 0px;}
+        to {left: 400px;}}
+    @keyframes mymove5 {
+        from {right: 0px;}
+        to {right: 400px;}}
+    .tag:hover {
+        background: gainsboro; /* make this whatever you want */
+    }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+                    <div class="main container-fluid text-black text-center "style="  padding: 0px;width: 100%;">
+
+    <div style="height: 20px"></div>
+                        <div style="height: 30px"></div>
+                            <!--<img src="https://storage.googleapis.com/odyssey_production_uploads/topics/c25d4ed05dfd2eb88549a1a15194c756.png" alt="img" height="50px"class="delay-4" style="position: relative;animation: 3s ease-in 1s infinite reverse both running mymove1 ;animation-delay: 2s; border-radius: 2px;">
+                            <span class="delay-3" style="margin-top:10px;height:20px;font-size: 40px; position: relative;animation: 3s ease-in 1s infinite reverse both running mymove1 ;animation-delay: 2s; border-radius: 2px;">HTML</span>-->
+                        <img src="https://storage.googleapis.com/odyssey_production_uploads/topics/c25d4ed05dfd2eb88549a1a15194c756.png" alt="img" height="50px"class="delay-4" style="position: relative;animation: mymove1 5s infinite ;animation-delay: 2s; border-radius: 2px;">
+                        <img src="https://storage.googleapis.com/odyssey_production_uploads/topics/08b6271d5d8d7c37a3659b6c817b6747.png" alt="img" height="50px"class="delay-3" style="position: relative;animation: mymove2 5s infinite;animation-delay: 2s; border-radius: 2px;">
+                        <img src=" https://storage.googleapis.com/odyssey_production_uploads/topics/7375a708a014af8673899f62637bca2d" alt="img" height="50px"class="delay-3" style="position: relative;animation: mymove 5s infinite;animation-delay: 2s; border-radius: 2px;">
+                        <img src="https://storage.googleapis.com/odyssey_production_uploads/topics/68185421c6abe3c6bc1f7bcf355266e3.png" alt="img" height="50px"class="delay-3" style="position: relative;animation: mymove5 5s infinite;animation-delay: 2s; border-radius: 2px;">
+                        <img src="https://storage.googleapis.com/odyssey_production_uploads/topics/bea72cde60ee9cab781cb946a0e7936d.png" alt="img" height="50px"class="delay-3" style="position: relative;animation: mymove3 5s infinite;animation-delay: 2s; border-radius: 2px;">
+                        <img src="https://storage.googleapis.com/odyssey_production_uploads/topics/88b2e3328198679570b28b49b4ce8474.png" alt="img" height="50px"class="delay-3" style="position: relative;animation: mymove4 5s infinite;animation-delay: 2s; border-radius: 2px;">
+                    </div>
+                    <div style="height: 20px"></div>
+                    <h1 class="home"> Here, <br>you can ask your technical questions<br> and find answers to them <br>thanks to the community!  <br>Also help others solve their problems.</h1>
+
+                    <div style="height: 20px"></div>
+
+    <a id="ask" href="{{ path('question_new') }}"><button class="btn ask" type="button" style="font-size: 30px; width: 110%; height: 60px;" >Ask your question</button></a>
+
+        {% for tags in tag %}
+            <div class="container-home">
+         <div class="row" style=" margin: 8px; width: 375px; ">
+            <div class="col">
+                <img src="{{ tags.symbolUrl }}" alt="img" height="40px" style="border-radius: 2px">
+            </div>
+            <div class="col-2 align-text-left">
+                <div class=" text-left"><h2>{{ tags.name }}</h2></div>
+            </div>
+             <div class="col-5 pt-3">
+             </div>
+            <div class="col-4">
+                <div class="col-sm text-right" >
+                    <a href="{{ path('tag_question',{slug: tags.slug} )}} " class="btn dark"> See more</a>
+                </div>
+            </div>
+         </div>
+         <div class="row ">
+             <div style="background-color: {{ tags.colorCode }};width:10px;   margin-bottom: 30px;"></div>
+                {% for question in tags.questions|slice(1,3) %}
+                    <div class="col-sm question-home ">
+                        <div class="home-content-question">
+                            <div class="home-title-question">
+                                <img src="{{ tags.symbolUrl }}" alt="img" class="imgTag">
+                                <div class="questionTitleHome">{{ question.title|striptags|u.truncate(50,'...')|raw }}</div>
+                            </div>
+                            <div class="questionContentHome">
+                                <p>{{ question.content|striptags|u.truncate(60,'...')|raw }}</p>
+                            </div>
+                            <div class="row " style="margin: 0;">
+                                <div class="status-home" style="background-color: {{ tags.colorCode }};">
+                                    <small>{{ question.answers.count }} Answer(s)</small>
+                                </div>
+                                <div class="more">
+                                    <a class="btn mb-2 me-2" href="{{ path('question_show', {slug: question.slug}) }}">See more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div style="height: 20px;"></div>
+         </div>
+    </div>
+        {% endfor %}
+            <div style="height: 50px;"> </div>
+    <div><h3>Learn more <span style="font-size: 20px">(with official documentation)</span></h3></div>
+            <div style="height: 20px;"></div>
+            <div class="container-home">
+                <div class="row-doc">
+                    <a href="https://www.php.net/" title="PHP">
+                        <div class="col-sm doc tag">
+                            <div class="w3-card-2 w3-round ws-pink align-text-center  " >
+                                <h5 class="tech">PHP</h5>
+                            </div>
+                        </div>
+                    </a>
+                    <div style="width: 10px"> </div>
+                    <div class="row-doc ">
+                        <a href="https://symfony.com/doc/current/index.html" title="PHP">
+                            <div class="col-sm doc tag" >
+                                <div class="w3-card-2 w3-round ws-pink " >
+                                    <h5 class="tech">Symfony</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div style="width: 10px"></div>
+                    <div class="row-doc">
+                        <a href="https://dev.java/learn/" title="java">
+                            <div class="col-sm doc tag" >
+                                <div class="w3-card-2 w3-round ws-pink " >
+                                    <h5 class="tech">Java</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div style="width: 10px"></div>
+                    <div class="row-doc ">
+                        <a href="https://www.w3schools.com/js/default.asp" title="javascript">
+                            <div class="col-sm doc tag" >
+                                    <div class="w3-card-2 w3-round ws-pink " >
+                                        <h5 class="tech">JavaScript</h5>
+                                    </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <div style="height: 20px;"></div>
+            <div class="row-doc">
+                <a href="https://getbootstrap.com/" title="bootstrap">
+                    <div class="col-sm doc tag">
+                        <div class="w3-card-2 w3-round ws-pink " >
+                            <h5 class="tech">Bootstrap</h5>
+                        </div>
+                    </div>
+                </a>
+                <div style="width: 10px"></div>
+                <div class="row-doc ">
+                    <a href="https://www.python.org/" title="Python">
+                        <div class="col-sm doc tag" >
+                            <div class="w3-card-2 w3-round ws-pink " >
+                                <h5 class="tech">Python</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div style="width: 10px"></div>
+                <div class="row-doc ">
+                    <a href="https://fr.reactjs.org/tutorial/tutorial.html" title="React">
+                        <div class="col-sm doc tag" >
+                                <div class="w3-card-2 w3-round ws-pink " >
+                                    <h5 class="tech">React</h5>
+                                </div>
+                        </div>
+                    </a>
+                </div>
+                <div style="width: 10px"></div>
+                <div class="row-doc ">
+                    <a href="https://www.w3schools.com/cpp/default.asp" title="C++">
+                        <div class="col-sm doc tag" >
+                            <div class="w3-card-2 w3-round ws-pink " >
+                                <h5 sclass="tech">C++</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div style="height: 20px;"></div>
+            <div class="row-doc ">
+                <a href="https://angular.io/docs" title="Angular">
+                    <div class="col-sm doc tag" style=" ">
+                        <div class="w3-card-2 w3-round ws-pink ">
+                            <h5 class="tech">Angular</h5>
+                        </div>
+                    </div>
+                </a>
+                    <div style="width: 10px"></div>
+                    <div class="row-doc ">
+                    <a href="https://www.w3schools.com/sql/default.asp" title="SQL">
+                        <div class="col-sm doc tag" >
+                            <div class="w3-card-2 w3-round ws-pink " >
+                                <h5 class="tech">SQL</h5>
+                            </div>
+                        </div>
+                    </a>
+                    <div style="width: 10px"></div>
+                        <div class="row-doc ">
+                            <a href="https://www.tutorialsteacher.com/core" title=".NET">
+                                <div class="col-sm doc tag" >
+                                    <div class="w3-card-2 w3-round ws-pink " >
+                                        <h5 class="tech">.NET</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <div style="width: 10px"></div>
+                    <div class="row-doc ">
+                        <a href="https://www.w3schools.com/cs/index.php" title="C#">
+                            <div class="col-sm doc tag" >
+                                <div class="w3-card-2 w3-round ws-pink " >
+                                    <h5 class="tech">C#</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            </div>
+    </div>
+</div>
+{% endblock %}

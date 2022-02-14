@@ -1,0 +1,335 @@
+/* Some positioning and ratios */
+.sticky-container {
+    max-width: 500px;
+    position: relative;
+    margin: auto;
+}
+
+
+.sticky-outer {
+    display: flex;
+    padding-top: 92.5925926%;
+    position: relative;
+
+    width: 100%;
+}
+
+.sticky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 315px;
+    width: 630px;
+}
+
+/* Shadow behind the sticky note */
+.sticky:before {
+    box-shadow: -2px 2px 15px 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
+    content: '';
+    width: 90%;
+    left: 5px;
+    height: 83%;
+    position: absolute;
+    top: 30%;
+}
+
+/* The sticky note itself */
+.sticky-content {
+    background: linear-gradient(
+            180deg,
+            rgba(255, 184, 187, 1) 0%,
+            rgba(255, 184, 187) 12%,
+            rgb(238, 163, 164) 75%,
+            rgb(253, 173, 177) 100%
+    );
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 8%;
+
+    clip-path: url(#stickyClip);
+}
+
+.justify-content-center {
+    justify-content: center;
+    width: 850px;
+    margin: auto;
+    margin-top: 35px;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.row-tag {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+/* Add responsiveness */
+@media screen and (min-width: 640px) {
+    .sticky:before {
+        height: 79%;
+        width: 90%;
+    }
+    .sticky-content {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .sticky:before {
+        height: 75%;
+        width: 90%;
+    }
+    .sticky-content {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .sticky:before {
+        height: 73%;
+        width: 90%;
+    }
+    .sticky-content {
+        font-size: 1.875rem;
+    }
+}
+
+
+/* show question */
+h1.header {
+    margin-top: 20px;
+}
+
+p#text, .content-question {
+    width: 700px;
+}
+
+.list-inline-item.filter:hover {
+    background-color: #484848;
+    color: #FFFFFF;
+}
+
+.filter {
+    color: #484848;
+}
+
+#ask {
+    color: #FFFFFF;
+}
+
+.btn.ask {
+    background-color: #ff6c71;
+    border-bottom-color: #9d4447;
+    border-left-color: #9d4447;
+    border-right-color: #9d4447;
+    border-top-color: #9d4447;
+    color: #fff;
+}
+
+.btn.ask:hover {
+    background-color: #c25255;
+}
+
+.text-muted-show {
+    --bs-text-opacity: 1;
+    color: #b7b6b6 !important;
+}
+
+.btn.edit {
+    text-decoration: none;
+    color: #ff6c71;
+    width: 150px;
+    margin: auto;
+    border-color: #ff6c71;
+}
+
+.btn.edit:hover {
+    background-color: #ff6c71;
+    color: #fff;
+}
+
+.btn.valid {
+    text-decoration: none;
+    color: #fff;
+    width: 150px;
+    margin: auto;
+    border-color: #212121;
+}
+
+.btn.valid:hover {
+    background-color: #212121;
+    color: #fff;
+}
+
+.status{
+    color: hsl(0,0%,100%);
+    padding: 7px 0 5px;
+    border: 1px solid transparent;
+    background-color: #9d4447;
+    margin-bottom: 8px;
+    text-align: center;
+    border-radius: 50%;
+    width: 80px;
+}
+.tag span{
+    background-color: #fcabb0;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+.filterSelected {
+    background-color: lightgray;
+}
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 30px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #5e5e5e; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+
+
+/* tag */
+
+.row-question{
+    margin-right: 20px;
+    margin-left: 85px;
+    padding-right: 70px;
+}
+/* login */
+
+.btn.login-btn{
+    margin-top: 30px;
+    margin-bottom: 5px;
+    background-color: #ff6c71;
+    color: #fffbfb;
+    border-bottom-color: #9d4447;
+    border-left-color: #9d4447;
+    border-right-color: #9d4447;
+    border-top-color: #9d4447;
+}
+
+.login-row
+{
+    width: 400px;
+    text-align: center;
+}
+
+/* Registration */
+
+input#registration_form_email {
+    height: 30px;
+}
+input#registration_form_username {
+    height: 30px;
+}
+input#registration_form_plainPassword {
+    height: 30px;
+}
+
+.btn.register-btn
+{
+    margin-top: 10px;
+    background-color: #ff6c71;
+    color: #fffbfb;
+    border-bottom-color: #9d4447;
+    border-left-color: #9d4447;
+    border-right-color: #9d4447;
+    border-top-color: #9d4447;
+}
+
+.row-form.register-row {
+    width: 400px;
+    text-align: center;
+}
+
+/* Question Show */
+
+.tag span{
+    background-color: #fcabb0;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 2px;
+    color: #484848;
+}
+.svg-icon {
+    vertical-align: bottom;
+    fill: #01a601;
+    filter: drop-shadow(3px 0 0 #484848);
+}
+.text-info.answer {
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 1px 0 0 #484848;
+}
+
+.btnAnswer {
+    margin-bottom: 30px;
+    font-size: large;
+    font-weight: bold;
+    color: #ff6c71;
+    border-bottom-color: #ff6c71;
+    border-left-color: #ff6c71;
+    border-right-color: #ff6c71;
+    border-top-color: #ff6c71;
+    text-decoration-color: #ff6c71;
+    width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header.text-center.question-show-title
+{
+    font-size: 30px;
+    max-width: 850px;
+}
+.text-muted.question-show-title1
+{
+    width: 150px;
+    margin-left: 500px;
+}
+.question-show-title-small
+{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+.question-show-answer-count
+{
+    border-color: #484848;
+    margin-bottom: 30px
+}

@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/assets/styles/form.css" rel="stylesheet">
+    <link href="/assets/styles/crumb.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+<div class="container-bc">
+    <ul class="breadcrumb">
+        <a href="/">
+            <li class="breadcrumb__item breadcrumb__item-firstChild">
+        <span class="breadcrumb__inner">
+            <span class="breadcrumb__title">Home</span>
+        </span>
+            </li>
+        </a>
+        <a href="/question">
+            <li class="breadcrumb__item breadcrumb__item-firstChild">
+        <span class="breadcrumb__inner">
+            <span class="breadcrumb__title">All questions</span>
+        </span>
+            </li>
+        </a>
+        <li class="breadcrumb__item"style="background-color: #f5c2c7">
+        <span class="breadcrumb__inner">
+        <span class="breadcrumb__title" >Ask question</span>
+        </span>
+        </li>
+    </ul>
+</div>
+
+{% if app.user %}
+    <h1>Ask your question</h1>
+    <br>
+    {{ form_start(form) }}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+    <div class="row-form">
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.content) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.tags) }}
+        </div>
+    </div>
+    <button  type="submit" class="btn">Send question</button>
+    {{ form_end(form) }}
+{% else %}
+{% endif %}
+{% endblock %}
